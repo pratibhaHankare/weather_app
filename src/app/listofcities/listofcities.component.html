@@ -1,0 +1,15 @@
+
+<p> List of the cities</p>
+<ul>
+  <li *ngFor ="let l of listnames">
+   <a (click)="getweather(l.main);">{{l.name}} &nbsp;&nbsp; ({{l.sys.country}})</a> 
+   <!-- <button class="btn btn-info" (click)="getPicture(l.id)">View Pictures of this city</button> -->
+
+   <a class="btn btn-info" routerLink="/pictures"> View Pictures of this city</a>
+   
+  </li>
+</ul>
+
+<app-actual-weather-info [item]="weather" *ngIf="loadComponent" ></app-actual-weather-info>
+
+
