@@ -19,7 +19,7 @@ public picList: any;
       data => {
         this.listOfPic = data;
         this.picList = this.listOfPic.hits;
-        console.log(this.listOfPic.hits.length);
+        // console.log(this.listOfPic.hits.length);
       },
       err => {
         if (err.status === 404) {
