@@ -17,13 +17,11 @@ public picList: any;
     this._citylistService.getListOfPic()
     .subscribe(
       data => {
-        debugger;
         this.listOfPic = data;
         this.picList = this.listOfPic.hits;
         console.log(this.listOfPic.hits.length);
       },
       err => {
-        debugger;
         if (err.status === 404) {
           this.errorMsg = err.statusText;
         }
@@ -31,6 +29,6 @@ public picList: any;
     );
   }
 
-  
+
 
 }

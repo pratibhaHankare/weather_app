@@ -12,7 +12,6 @@ export class ActualWeatherInfoComponent implements OnInit {
 
  
   ngOnInit() {
-    debugger;
     console.log(this.item);
     this.realweatherInfo = this.item;
   }

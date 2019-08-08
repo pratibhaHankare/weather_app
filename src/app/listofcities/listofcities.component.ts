@@ -30,7 +30,7 @@ export class ListofcitiesComponent implements OnInit {
           console.log(this.listOfCities.list[0].main);
         },
         err => {
-          // debugger;
+          
           if (err.status === 404) {
             this.errorMsg = err.statusText;
           }
@@ -41,8 +41,6 @@ export class ListofcitiesComponent implements OnInit {
 
 
   getweather(weatherInfo) {
-    debugger;
-    
     if (this.loadComponent === true) {
       this.loadComponent = false;
       location.reload();
