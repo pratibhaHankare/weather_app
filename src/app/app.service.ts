@@ -42,30 +42,26 @@ export class AppService {
         per_page: '50'
       }
     }).map(data => {
-      debugger;
       console.log(data);
       this.picData = data;
       return this.picData;
-      // return this.process(this.picData.hits);
     }).catch(
       (error: Response) => {
         return Observable.throw(error);
       });
   }
 
-  // mapping the data
-  // process(data: any) {
-  //   debugger;
-  //       let dataTransform: any[] = [{id: 524901}, {id: 703448}, {id:2643743}, {id:1271231}, 1257986, 519188, 1283378, 708546, 1270260 ];
-  //       let i: number = 0;
-  //       for (let item of data)
-  //       {
-  //           dataTransform.push({"id": i, "key": item.largeImageURL});
-  //           i++;
-  //       }
-  //       console.log(dataTransform);
-  //      // return dataTransform;
-  //   }
+  // APi call to get the info as per the id
+  getWeatherInfoPerId(id) {
+    return this.http.get(this._url, {
+      params: {
+        id: id,
+        units: 'metric',
+        appid: '72095fba03127c9d3918d3bd0fe5120d'
+      }
+    });
+  }
+
 
 
 }

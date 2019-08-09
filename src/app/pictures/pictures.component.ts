@@ -26,18 +26,19 @@ export class PicturesComponent implements OnInit {
 
   ngOnInit() {
     this.dataobj = JSON.parse(this.route.snapshot.queryParams['data']);
-    console.log(this.dataobj);
+    // loading the pictures via API
     this.loaddata();
     this.actualPicture = [];
   }
 
+  // loading the pictures via API
   loaddata() {
     this.actualPicture = [];
     this._citylistService.getListOfPic()
       .subscribe(
         data => {
           this.listOfPic = data;
-          this.picList = this.listOfPic.hits.map((data: any) => {
+          this.picList = this.listOfPic.hits.map(( data: any) => {
             return data.largeImageURL;
           });
           console.log(this.picList);
@@ -54,5 +55,7 @@ export class PicturesComponent implements OnInit {
         }
       );
   }
+
+  
 
 }

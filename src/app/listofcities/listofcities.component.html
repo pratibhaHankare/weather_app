@@ -1,9 +1,11 @@
 <p> List of the cities</p>
 <ul>
   <li *ngFor="let l of listnames; let i = index">
-    <a (click)="getweather(l.main);">{{l.name}} &nbsp;&nbsp; ({{l.sys.country}})</a>
+    <a (click)="getweather(l.id);">{{l.name}} &nbsp;&nbsp; ({{l.sys.country}})</a>
     <a class="btn btn-info" (click)="getPicture(i+4,i+8)"> View Pictures of this city</a>
   </li>
 </ul>
 
-<app-actual-weather-info [item]="weather" *ngIf="weather"></app-actual-weather-info>
+
+<!-- child route way of communication -->
+<!-- <app-actual-weather-info [item]="weather" *ngIf="weather"></app-actual-weather-info> -->

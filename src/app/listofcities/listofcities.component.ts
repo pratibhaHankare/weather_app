@@ -19,15 +19,16 @@ export class ListofcitiesComponent implements OnInit {
   constructor(private _citylistService: AppService, private router: Router) { }
 
   ngOnInit() {
+    // call to fetch the city API in bulk
+    this.getcity();
+  }
 
-    // interceptor call
+  // call to fetch the city API in bulk
+  getcity() {
     this._citylistService.getListOfCity()
       .subscribe(
         data => {
           this.listOfCities = data;
-
-          console.log(this.listOfCities);
-          console.log(this.listOfCities.cnt);
           this.listnames = this.listOfCities.list;
         },
         err => {
@@ -38,15 +39,13 @@ export class ListofcitiesComponent implements OnInit {
       );
   }
 
-
-  getweather(weatherInfo) {
-    this.weather = weatherInfo;
+  // navigating to the weather component
+  getweather(weatherInfoId) {
+    this.router.navigate(['/weatherInfo', weatherInfoId]);
   }
 
+  // Passing the parameter to the list of pictures
   getPicture(to, from) {
-    // debugger;
-    // this.router.navigate(['/pictures', {""id]);
-
     this.router.navigate(['/pictures'], { queryParams: { data: JSON.stringify({ first: to, last: from }) } });
   }
 

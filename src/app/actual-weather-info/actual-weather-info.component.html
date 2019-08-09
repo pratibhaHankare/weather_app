@@ -1,10 +1,11 @@
 <p>
-  The weather info is:
+  The weather info of city <b>{{cityName}}</b> :
 </p>
 <ul>
-  <li>Humidity : {{realweatherInfo.humidity}}</li>
-  <li>Temperature : {{realweatherInfo.temp}}</li>
-  <li>Temperature Min : {{realweatherInfo.temp_min}}</li>
-  <li>Temperature Max : {{realweatherInfo.temp_max}}</li>
-  <li>Pressure : {{realweatherInfo.pressure}}</li>
+  <li>Humidity : {{realweatherInfo?.humidity}}</li>
+  <li>Temperature : {{realweatherInfo?.temp}}</li>
+  <li>Temperature Min : {{realweatherInfo?.temp_min}}</li>
+  <li>Temperature Max : {{realweatherInfo?.temp_max}}</li>
+  <li>Pressure : {{realweatherInfo?.pressure}}</li>
 </ul>
+<button class="btn btn-primary" (click)="goBack()">Back</button>
