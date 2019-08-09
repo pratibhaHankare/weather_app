@@ -11,15 +11,17 @@ import { ActualWeatherInfoComponent } from './actual-weather-info/actual-weather
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 
-import { ViewPicComponent } from './view-pic/view-pic.component';
+// import { ViewPicComponent } from './view-pic/view-pic.component';
+import { PicturesComponent } from './pictures/pictures.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListofcitiesComponent,
     ActualWeatherInfoComponent,
-    ViewPicComponent,
-    routingComponents
+    // ViewPicComponent,
+    routingComponents,
+    PicturesComponent
   ],
   imports: [
     BrowserModule,

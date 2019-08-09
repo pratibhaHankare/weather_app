@@ -4,13 +4,16 @@ import { tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AppService {
   // url call
   private _url = 'https://api.openweathermap.org/data/2.5/group';
   private _pic_url = 'https://pixabay.com/api/';
+  private _cityIds: any = [524901, 703448, 2643743, 1271231, 1257986, 519188, 1283378, 708546, 1270260 ];
+  public picData: any;
 
 
 
@@ -36,9 +39,33 @@ export class AppService {
         q: 'city',
         image_type: 'photo',
         pretty: 'true',
-        per_page: '4'
+        per_page: '50'
       }
-    });
+    }).map(data => {
+      debugger;
+      console.log(data);
+      this.picData = data;
+      return this.picData;
+      // return this.process(this.picData.hits);
+    }).catch(
+      (error: Response) => {
+        return Observable.throw(error);
+      });
   }
+
+  // mapping the data
+  // process(data: any) {
+  //   debugger;
+  //       let dataTransform: any[] = [{id: 524901}, {id: 703448}, {id:2643743}, {id:1271231}, 1257986, 519188, 1283378, 708546, 1270260 ];
+  //       let i: number = 0;
+  //       for (let item of data)
+  //       {
+  //           dataTransform.push({"id": i, "key": item.largeImageURL});
+  //           i++;
+  //       }
+  //       console.log(dataTransform);
+  //      // return dataTransform;
+  //   }
+
 
 }

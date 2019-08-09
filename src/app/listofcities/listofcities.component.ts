@@ -1,6 +1,6 @@
-import { Component, OnInit,OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { AppService } from '../app.service';
-import { Router, ActivatedRoute, ParamMap} from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-listofcities',
@@ -15,6 +15,7 @@ export class ListofcitiesComponent implements OnInit {
   public weather: any;
   public loadComponent: any = false;
 
+
   constructor(private _citylistService: AppService, private router: Router) { }
 
   ngOnInit() {
@@ -24,13 +25,12 @@ export class ListofcitiesComponent implements OnInit {
       .subscribe(
         data => {
           this.listOfCities = data;
+
           console.log(this.listOfCities);
           console.log(this.listOfCities.cnt);
           this.listnames = this.listOfCities.list;
-          console.log(this.listOfCities.list[0].main);
         },
         err => {
-          
           if (err.status === 404) {
             this.errorMsg = err.statusText;
           }
@@ -39,21 +39,15 @@ export class ListofcitiesComponent implements OnInit {
   }
 
 
-
   getweather(weatherInfo) {
-    if (this.loadComponent === true) {
-      this.loadComponent = false;
-      location.reload();
-    }
-    console.log(weatherInfo);
     this.weather = weatherInfo;
-    this.loadComponent = true;
   }
 
-  getPicture(id) {
-    debugger;
-    console.log(id);
-    this.router.navigate(['/pictures', id]);
+  getPicture(to, from) {
+    // debugger;
+    // this.router.navigate(['/pictures', {""id]);
+
+    this.router.navigate(['/pictures'], { queryParams: { data: JSON.stringify({ first: to, last: from }) } });
   }
 
 }
